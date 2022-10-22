@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import {Link,Navigate,useNavigate,useLocation} from "react-router-dom"
 import "./style/phoneNumber.css"
 function PhoneNumber(){
- 
+ const location=useLocation();
+   console.log( location.state);
  const [phone,setPhone] = useState("");
 
 

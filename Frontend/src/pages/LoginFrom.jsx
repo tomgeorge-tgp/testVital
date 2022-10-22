@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState,useEffect} from "react";
 import "./style/loginForm.css";
-import {Link,Navigate,useNavigate} from "react-router-dom"
+import {Link,Navigate,useNavigate,useParams} from "react-router-dom"
 import axios from 'axios';
 import api from '../api';
 import { signupUrl } from '../url/url';
@@ -9,7 +9,7 @@ import { signupUrl } from '../url/url';
 function LoginFrom (props){
     const navigate = useNavigate();
 
-const [email,setEmail]=useState("1abbb3@gmail.com");
+const [email,setEmail]=useState("1accc3@gmail.com");
 const [name,setName]=useState("");
 const [dob,setDob]=useState("");
 const [password,setPassword]=useState("*************");
@@ -28,27 +28,29 @@ const [phoneNumber,setPhoneNumber]=useState("+919445744187");
        dob,
     };
     console.log(data);
-
-    try{
-        // const allData=[...onloadeddata,data];
-      const response=await api.post(
-        signupUrl,
-        data,
-        {
-        headers: {
-          "Content-Type":"application/json",
-          "Accept": "*/*",
-        }
-      }      ).then(res => res.json()).then(data => console.log(data))
-      .catch(err =>  new Error(err));
+     
+  
+    navigate("/phonenumber",{state: data});
+    // try{
+    //     // const allData=[...onloadeddata,data];
+    //   const response=await api.post(
+    //     signupUrl,
+    //     data,
+    //     {
+    //     headers: {
+    //       "Content-Type":"application/json",
+    //       "Accept": "*/*",
+    //     }
+    //   }      ).then(res => console.log(res.status, res.data))
+    //   .catch(err =>  new Error(err));
       
      
-      // navigate("/phonenumber");
-    }
-    catch(err){
-        console.log(`Error:${err.message}`);
+    //   
+    // }
+    // catch(err){
+    //     console.log(`Error:${err.message}`);
 
-    }
+    // }
    
     
   }
