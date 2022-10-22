@@ -41,15 +41,15 @@ app.use(allowCrossDomain);
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.options('*', cors()); 
+// app.options('*', cors()); 
 
 
 

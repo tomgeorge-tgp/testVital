@@ -3,35 +3,47 @@ import {useState,useEffect} from "react";
 import "./style/loginForm.css";
 import {Link,Navigate,useNavigate} from "react-router-dom"
 import axios from 'axios';
-import api from '../api/posts';
+import api from '../api';
 import { signupUrl } from '../url/url';
 
 function LoginFrom (props){
     const navigate = useNavigate();
 
-const [email,setEmail]=useState("123@gmail.com");
+const [email,setEmail]=useState("1abbb3@gmail.com");
 const [name,setName]=useState("");
 const [dob,setDob]=useState("");
-const [gender,setGender]=useState("");
-const [phoneNumber,setPhoneNumber]=useState("+91944604187");
+const [password,setPassword]=useState("*************");
+const [gender,setGender]=useState("P");
+const [phoneNumber,setPhoneNumber]=useState("+919445744187");
 
   async function handleSubmit(e)
   {
     e.preventDefault();
     const data={
-        email,
-        name,
-        dob,
-        gender,
-        phoneNumber,
+       name,
+       email,
+       password,
+       phoneNumber,
+       gender,
+       dob,
     };
     console.log(data);
 
     try{
         // const allData=[...onloadeddata,data];
-      const response=await axios.post(signupUrl, data);
-
-      navigate("/phonenumber");
+      const response=await api.post(
+        signupUrl,
+        data,
+        {
+        headers: {
+          "Content-Type":"application/json",
+          "Accept": "*/*",
+        }
+      }      ).then(res => res.json()).then(data => console.log(data))
+      .catch(err =>  new Error(err));
+      
+     
+      // navigate("/phonenumber");
     }
     catch(err){
         console.log(`Error:${err.message}`);
@@ -48,8 +60,9 @@ const [phoneNumber,setPhoneNumber]=useState("+91944604187");
           <div className="login3-container2"></div>
           <input
             type="date"
-            pattern="\d{2}-\d{2}-\d{4}"
+            pattern="\d{4}-\d{2}-\d{2}"
             required
+            value={dob}
             placeholder="DD/MM/YYYY"
             className="login3-input content input"
             onChange={(e)=>{
@@ -61,6 +74,8 @@ const [phoneNumber,setPhoneNumber]=useState("+91944604187");
             type="text"
             placeholder="Enter"
             required
+            value={name}
+
             className="login3-input1 content input"
             onChange={(e)=>{
               setName(e.target.value)
@@ -71,7 +86,10 @@ const [phoneNumber,setPhoneNumber]=useState("+91944604187");
             id="gender"
             size="0"
             required
+            value={gender}
+
             className="login3-select content"
+        
             onChange={(e)=>{
               setGender((curr) => {
                 console.log(curr)
@@ -81,10 +99,11 @@ const [phoneNumber,setPhoneNumber]=useState("+91944604187");
               
             }}
           >
-            <option value="F" selected>
+            <option value="F" >
               Female
             </option>
             <option value="M">Male</option>
+            <option value="T">Transgender</option>
             <option value="P">Prefer not to say</option>
           </select>
           <span className="login3-text">Date of Birth</span>

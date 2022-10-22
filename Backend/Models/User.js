@@ -13,8 +13,9 @@ const UserSchema = mongoose.Schema(
       default: 'P'
     },
     dob: {
-      type: String,
+      type: Date,
       required:[true,'Please add your dob'],
+      
     },
     email: {
       type: String,

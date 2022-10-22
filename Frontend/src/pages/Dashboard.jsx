@@ -7,7 +7,7 @@ import Profile from '../components/Profile';
 import Lastreadings from '../components/Lastreadings'
 import bp_icon from '../components/assets/bp.png'
 import axios from 'axios'
-import api from '../api/posts'
+import api from '../api'
 
 const Dashboard = (props) => {
   const [userData,setUserData]=useState([]);
