@@ -1,43 +1,47 @@
 import React, { useEffect, useState } from 'react'
 // idea to the car
 import Header from '../components/header'
-import Toolbar from '../components/toolbar'
-import Card from '../components/cards'
-import Profile from '../components/Profile';
-import Lastreadings from '../components/Lastreadings'
-import bp_icon from '../components/assets/bp.png'
-import axios from 'axios'
-import api from '../api'
+import Toolbar from '../components/toolbar';
+import {Link,Navigate,useNavigate,useLocation} from "react-router-dom";
+import Card from '../components/cards';
+import Profile from '../components/ProfileCard';
+import Lastreadings from '../components/Lastreadings';
+import bp_icon from '../components/assets/bp.png';
+import axios from 'axios';
+import api from '../api';
 
-const Dashboard = (props) => {
-  const [userData,setUserData]=useState([]);
+function Dashboard(){
+ 
+  const location=useLocation();
+
+  // const [userData,setUserData]=useState([]);
   
-  const userDataFetch=async()=>{
-    try{
-    const response=await api.get('/api/user');
-    setUserData(response.data);
-    console.log(userData);
-  }catch(err)
-  {
-    if(err.response){
-    //Not in the 200 response range
-    console.log(err.response.data);
-    console.log(err.response.status);
-    console.log(err.response.headers);
-  }
-  else
-  {
-    console.log(`Error:${err.message}`);
-  }
-  }
-  }
-  useEffect(()=>{
-    userDataFetch();
-  },[])
+  // const userDataFetch=async()=>{
+  //   try{
+  //   const response=await api.get('/api/user');
+  //   setUserData(response.data);
+  //   console.log(userData);
+  // }catch(err)
+  // {
+  //   if(err.response){
+  //   //Not in the 200 response range
+  //   console.log(err.response.data);
+  //   console.log(err.response.status);
+  //   console.log(err.response.headers);
+  // }
+  // else
+  // {
+  //   console.log(`Error:${err.message}`);
+  // }
+  // }
+  // }
+  // useEffect(()=>{
+  //   userDataFetch();
+  // },[])
 
 
 
-
+ 
     return (
       <>
         <div className="dashboard-container">
@@ -47,10 +51,13 @@ const Dashboard = (props) => {
             
             <div className='mid-section'>
               <div className='readings'>
-                   <div className='profile-card'><Profile/></div> 
+                   <div className='profile-card'><Profile data={location.state.name}/></div> 
                   <div className='reading-cards'>
-                   <Card name = "Blood Pressure" img  = {bp_icon}></Card>
-                   <Card name = "Heart Rate & SP02" img  = {bp_icon}></Card>
+                   <Card name = "Blood Pressure" img  = {bp_icon} onClick={(e)=>{
+                console.log("click");}}
+                   ></Card>
+                   <div onClick={(e)=>{
+                console.log("click");}} ><Card name = "Heart Rate & SP02" img  = {bp_icon}></Card></div>
                    <Card name = "Body Temperature" img  = {bp_icon}></Card>
                    <Card name = "Blood Glucose" img  = {bp_icon}></Card>
                    <Card name = "Digital Stethoscope" img  = {bp_icon}></Card>

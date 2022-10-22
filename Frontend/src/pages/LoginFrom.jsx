@@ -9,12 +9,12 @@ import { signupUrl } from '../url/url';
 function LoginFrom (props){
     const navigate = useNavigate();
 
-const [email,setEmail]=useState("1accc3@gmail.com");
+const [email,setEmail]=useState("1affff3@gmail.com");
 const [name,setName]=useState("");
 const [dob,setDob]=useState("");
 const [password,setPassword]=useState("*************");
 const [gender,setGender]=useState("P");
-const [phoneNumber,setPhoneNumber]=useState("+919445744187");
+const [phoneNumber,setPhoneNumber]=useState("");
 
   async function handleSubmit(e)
   {
@@ -30,29 +30,7 @@ const [phoneNumber,setPhoneNumber]=useState("+919445744187");
     console.log(data);
      
   
-    navigate("/phonenumber",{state: data});
-    // try{
-    //     // const allData=[...onloadeddata,data];
-    //   const response=await api.post(
-    //     signupUrl,
-    //     data,
-    //     {
-    //     headers: {
-    //       "Content-Type":"application/json",
-    //       "Accept": "*/*",
-    //     }
-    //   }      ).then(res => console.log(res.status, res.data))
-    //   .catch(err =>  new Error(err));
-      
-     
-    //   
-    // }
-    // catch(err){
-    //     console.log(`Error:${err.message}`);
-
-    // }
-   
-    
+    navigate("/phonenumber",{state: data});  
   }
 
   return (

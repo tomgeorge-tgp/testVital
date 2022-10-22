@@ -1,12 +1,64 @@
 import React from 'react';
 import { useState } from 'react';
 import {Link,Navigate,useNavigate,useLocation} from "react-router-dom"
-import "./style/phoneNumber.css"
+import "./style/phoneNumber.css";
+import axios from 'axios';
+import api from '../api';
+import { signupUrl } from '../url/url';
+
+
 function PhoneNumber(){
  const location=useLocation();
-   console.log( location.state);
+   
  const [phone,setPhone] = useState("");
+ const navigate = useNavigate();  
+ async function handleSubmit(e)
+ {
+    setPhone("+91"+phone);
+    e.preventDefault();
+   const data={
+      name:location.state.name,
+      email:location.state.email,
+      password:location.state.password,
+      phoneNumber:phone,
+      gender:location.state.gender,
+      dob:location.state.dob,
+   };
+   console.log(data);
+    
+ 
+   
+   try{
+       // const allData=[...onloadeddata,data];
+     const response=await api.post(
+       signupUrl,
+       data,
+       {
+       headers: {
+         "Content-Type":"application/json",
+         "Accept": "*/*",
+       }
+     }      ).then(res => console.log(res.status, res.data))
+     .catch(err =>  new Error(err));
+     
+    
+     
+   }
+   catch(err){
+       console.log(`Error:${err.message}`);
 
+   }
+    
+   navigate("/dashboard",{state: data});
+   
+ }
+ 
+
+
+
+
+
+  
 
   return (
     <>
@@ -14,20 +66,60 @@ function PhoneNumber(){
         <div className="ph-number-container1">
           <div className="ph-number-container2"></div>
           <div className="ph-number-container3"></div>
-          <button className="ph-number-button button">+</button>
-          <button className="ph-number-button01 button">7</button>
-          <button className="ph-number-button02 button">4</button>
-          <button className="ph-number-button03 button">1</button>
-          <button className="ph-number-button04 button">0</button>
-          <button className="ph-number-button05 button">8</button>
-          <button className="ph-number-button06 button">5</button>
-          <button className="ph-number-button07 button">2</button>
-          <button className="ph-number-button08 button">_</button>
-          <button className="ph-number-button09 button">9</button>
-          <button className="ph-number-button10 button">6</button>
-          <button className="ph-number-button11 button">3</button>
-          <span className="ph-number-text">+91   -   0000 000 000</span>
-          <button className="ph-number-button12 button">Continue</button>
+          <button className="ph-number-button button" onClick={(e)=>{
+                setPhone(phone+"+");
+                console.log(phone);
+            }}>+</button>
+          <button className="ph-number-button01 button" onClick={(e)=>{
+                setPhone(phone+"7");
+                console.log(phone);
+            }}>7</button>
+          <button className="ph-number-button02 button" onClick={(e)=>{
+                setPhone(phone+"4");
+                console.log(phone);
+            }}>4</button>
+          <button className="ph-number-button03 button" onClick={(e)=>{
+                setPhone(phone+"1");
+                console.log(phone);
+            }}>1</button>
+          <button className="ph-number-button04 button" onClick={(e)=>{
+                setPhone(phone+"0");
+                console.log(phone);
+            }}>0</button>
+          <button className="ph-number-button05 button" onClick={(e)=>{
+                setPhone(phone+"8");
+                console.log(phone);
+            }}>8</button>
+          <button className="ph-number-button06 button" onClick={(e)=>{
+                setPhone(phone+"5");
+                console.log(phone);
+            }}>5</button>
+          <button className="ph-number-button07 button" onClick={(e)=>{
+                setPhone(phone+"2");
+                console.log(phone);
+            }}>2</button>
+          <button className="ph-number-button08 button" onClick={(e)=>{
+                setPhone(phone+"_");
+                console.log(phone);
+            }}>_</button>
+          <button className="ph-number-button09 button" onClick={(e)=>{
+                setPhone(phone+"9");
+                console.log(phone);
+            }}>9</button>
+          <button className="ph-number-button10 button" onClick={(e)=>{
+                setPhone(phone+"6");
+                console.log(phone);
+            }}>6</button>
+          <button className="ph-number-button11 button" onClick={(e)=>{
+                setPhone(phone+"3");
+                console.log(phone);
+            }}>3</button>
+          <span className="ph-number-text">+91   -   {phone}</span>
+          <button className="ph-number-button12 button" onClick={(e)=>{
+                setPhone(phone+"+");
+                handleSubmit(e);
+            }}
+          >Continue</button>
           <span className="ph-number-text1">
             Enter your phone number to proceed
           </span>
