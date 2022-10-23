@@ -16,22 +16,24 @@ function PhoneNumber(){
  {
     setPhone("+91"+phone);
     e.preventDefault();
-   const data={
-      name:location.state.name,
-      email:location.state.email,
-      password:location.state.password,
-      phoneNumber:phone,
-      gender:location.state.gender,
-      dob:location.state.dob,
-   };
+    const data={
+         name:location.state.name,
+         email:location.state.email,
+         password:location.state.password,
+         phoneNumber:phone,
+         gender:location.state.gender,
+         dob:location.state.dob,
+   
+  }
    console.log(data);
     
  
    
    try{
-       // const allData=[...onloadeddata,data];
+      
      const response=await api.post(
-       signupUrl,
+      //  signupUrl,
+      location.state.url,
        data,
        {
        headers: {

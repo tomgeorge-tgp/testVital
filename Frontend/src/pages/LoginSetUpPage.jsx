@@ -41,9 +41,9 @@ function LoginSetUpPage(){
               }}
             />
           </div>
-          {userMode==="newUser" ?(<Link to="/logForm" className="login1-navlink button">
+          {userMode==="newUser" ?(<Link to="/signUpForm" className="login1-navlink button">
             Continue
-          </Link>):(<Link to="/" className="login1-navlink button">
+          </Link>):(<Link to="/loginForm" className="login1-navlink button">
             Continue
           </Link>)
 

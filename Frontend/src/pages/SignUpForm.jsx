@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from "react";
-import "./style/loginForm.css";
+import "./style/signUpForm.css";
 import {Link,Navigate,useNavigate,useParams} from "react-router-dom"
 import axios from 'axios';
 import api from '../api';
@@ -9,7 +9,8 @@ import { signupUrl } from '../url/url';
 function LoginFrom (props){
     const navigate = useNavigate();
 
-const [email,setEmail]=useState("1affff3@gmail.com");
+const [signUpMode,setSignupMode]=useState("");
+const [email,setEmail]=useState("1ahhhh3@gmail.com");
 const [name,setName]=useState("");
 const [dob,setDob]=useState("");
 const [password,setPassword]=useState("*************");
@@ -26,11 +27,16 @@ const [phoneNumber,setPhoneNumber]=useState("");
        phoneNumber,
        gender,
        dob,
+       url:signupUrl,
+       type:"signUp",
     };
     console.log(data);
      
-  
-    navigate("/phonenumber",{state: data});  
+    if(signUpMode==="phonenumber")
+    {
+      navigate("/phonenumber",{state: data});  
+    }
+
   }
 
   return (
@@ -92,10 +98,18 @@ const [phoneNumber,setPhoneNumber]=useState("");
           <span className="login3-text3">Quick sign-up</span>
           <span className="login3-text4">Select a mode to sign-up</span>
           <span className="login3-text5">Gender</span>
-          <button className="login3-button button">Phone</button>
+          <button className="login3-button button"
+          onClick={(e)=>{
+            setSignupMode("phonenumber");
+            console.log("phoneNumber");
+          }}>
+          Phone
+          </button>
+
           <button className="login3-button1 button">
             Unique Identification No.
           </button>
+
           <button className="login3-button2 button">Email</button>
           <button className="login3-button3 button"
             onClick={(e)=>{
