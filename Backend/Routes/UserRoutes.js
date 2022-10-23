@@ -5,7 +5,10 @@ import bcrypt from "bcrypt";
 import User from "../Models/User.js"
 import cors from "cors";
 const SALT_ROUNDS = 5;
+import jwt from "jsonwebtoken";
+import "dotenv"
 
+//signup page post routes
 UserRouter.post('/signup',[
     check("name").not().isEmpty(),
     check("email").isEmail(),
@@ -53,5 +56,63 @@ UserRouter.post('/signup',[
    return res.status(201).json({user: {name: user.name, email: user.email,gender:user.gender,dob:user.dob} });
 
 });
+
+
+
+
+UserRouter.post('/login',[
+  check("name").not().isEmpty(),
+ // check("email").isEmail(),
+  check("password").not().isEmpty(),
+  check("password").isLength({min:6}),
+  check("phoneNumber").not().isEmpty(),
+  // check("phoneNumber").isMobilePhone('any'),  //en-IN
+  // check("dob").not().isEmpty(),
+  // check('dob').isISO8601(),
+  // check("gender").not().isEmpty(),
+  // check("gender").matches(/^(?:F|M|T|P)$/),   //regular expression validator
+  // check("dob").matches(/^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\d\d$/),
+], async(req, res) =>
+{
+  console.log(req.body);
+  // res.header("Access-Control-Allow-Origin", "*");
+  const errors = validationResult(req);
+  
+  if(!errors.isEmpty())
+  {
+    console.log(errors.array())
+    return res.status(400).json({errors:errors.array() })
+
+  }
+  
+  let {name,email,password,phoneNumber,gender,dob} =req.body;
+  let user=await User.findOne({phoneNumber: phoneNumber});
+  if(user==null)
+  {
+    return res.status(400).send("cannot find the user");
+  }
+
+  try{
+    if(await bcrypt.compare(req.body.password,user.password)){
+       res.send("successfully logged in");
+    }
+    else{
+      res.send("failed to login");
+    }
+  }
+  catch{
+    res.status(500).send()
+  }
+
+ const accessToken=jwt.sign(user,process.env.ACCESS_TOKEN_SECRET)
+  res.json({accessToken:accessToken})
+
+});
+
+
+
+
+
+
 
 export default UserRouter;
