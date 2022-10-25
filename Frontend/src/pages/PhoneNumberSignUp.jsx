@@ -14,13 +14,13 @@ function PhoneNumber(){
  const navigate = useNavigate();  
  async function handleSubmit(e)
  {
-    setPhone("+91"+phone);
+    
     e.preventDefault();
     const data={
          name:location.state.name,
          email:location.state.email,
          password:location.state.password,
-         phoneNumber:phone,
+         phoneNumber:"+91"+phone,
          gender:location.state.gender,
          dob:location.state.dob,
    
