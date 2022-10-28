@@ -40,7 +40,10 @@ function PhoneNumber(){
          "Content-Type":"application/json",
          "Accept": "*/*",
        }
-     }      ).then(res => console.log(res.status, res.data))
+     }      ).then(res =>{ console.log(res.status, res.data)
+        navigate("/dashboard",{state: data});
+     }
+     )
      .catch(err =>  new Error(err));
      
     
@@ -51,15 +54,8 @@ function PhoneNumber(){
 
    }
     
-   navigate("/dashboard",{state: data});
    
  }
- 
-
-
-
-
-
   
 
   return (
@@ -101,7 +97,7 @@ function PhoneNumber(){
                 console.log(phone);
             }}>2</button>
           <button className="ph-number-button08 button" onClick={(e)=>{
-                setPhone(phone+"_");
+                // setPhone(phone+"_");
                 console.log(phone);
             }}>_</button>
           <button className="ph-number-button09 button" onClick={(e)=>{
@@ -118,14 +114,17 @@ function PhoneNumber(){
             }}>3</button>
           <span className="ph-number-text">+91   -   {phone}</span>
           <button className="ph-number-button12 button" onClick={(e)=>{
-                setPhone(phone+"+");
+                setPhone(phone);
                 handleSubmit(e);
             }}
           >Continue</button>
           <span className="ph-number-text1">
             Enter your phone number to proceed
           </span>
-          <div className="ph-number-html-node">
+          <div className="ph-number-html-node" onClick={(e)=>{
+                setPhone(phone.slice(0, -1));
+                
+            }}>
             <span
               dangerouslySetInnerHTML={{
                 __html:

@@ -11,7 +11,7 @@ import { loginUrl } from '../url/url';
 function LoginForm(){
     const navigate = useNavigate();
     const [loginMode,setLoginMode]=useState("");
-    const [email,setEmail]=useState("1agggg3@gmail.com");
+    const [email,setEmail]=useState("1gfege3@gmail.com");
     const [name,setName]=useState("");
     const [phoneNumber,setPhoneNumber]=useState("");
     const [password,setPassword]=useState("*************");

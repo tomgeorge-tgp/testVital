@@ -1,56 +1,51 @@
 import React from 'react'
-import "./style/bpExisting.css"
+
+import "./style/bloodGlucoseExisting.css"
 import Header from '../components/HeaderBar'
 import  { useEffect, useState } from 'react';
 import Bp2_Pop from "../components/Bp2Pop";
-import BpStartPopUp from "../components/BpStart";
-import BloodPressureEnd from "../components/BloodPressureStop";
+import BloodGlucoseStart from "../components/BloodGlucoseStart";
+import BloodGlucoseInstruction from "../components/BloodGlucoseInstruction";
+import BloodGlucoseStop from "../components/BloodGlucoseStop";
 
-// function* gen(){
-//   yield 1;
-//   yield 2;
-//   yield 3;
-//   yield 4;
-// }
-
-const BloodPressurepopup = (props) => {
+const BloodGlucosepopup = (props) => {
   const [popUpSequence, setPopupSequence] = useState("BP_START");
-        if (popUpSequence === "BP_START") return(<BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}} />);
-        else if (popUpSequence === "BP_END") return (<BloodPressureEnd setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
+        if (popUpSequence === "BP_START") return(<BloodGlucoseStart setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_INST")}} />);
+        else if (popUpSequence === "BP_INST") return (<BloodGlucoseInstruction setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}}/>);
+        else if (popUpSequence === "BP_END") return (<BloodGlucoseStop setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
  }
 
-function Bpexisting(){
+
+
+function BloodGlucoseExisting(){
 
   const [initateTestPopUp,setinitateTestPopUp]=useState(false);
 
 
   return (
     <>
-     {/* <Bp_Start_Pop_Up/> */}
-      <div className="bpexisting-container">
-        <div className="bpexisting-container1">
-     {initateTestPopUp && <BloodPressurepopup onExitClick={()=>setinitateTestPopUp(false)} />}
-           {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)} onContinueClick={()=>setinitateTestPopUp(false)}  /></div>}  */}
-          <span className="bpexisting-text">
+      <div className="bgexisting-container">
+        <div className="bgexisting-container1">
+        {initateTestPopUp && <div className="initate__test__pop__up">< BloodGlucosepopup setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>}
+          <span className="bgexisting-text">
             <span>&lt;</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text04">
+          <span className="bgexisting-text04">
             <span>instructions</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text08">
-            <span>Blood Pressure</span>
+          <span className="bgexisting-text08">
+            <span>Blood Glucose</span>
             <br></br>
             <br></br>
           </span>
-          <div className="bpexisting-container2" onClick={(e)=>{
+          <div className="bgexisting-container2" onClick={(e)=>{
                 console.log("click");
-                setinitateTestPopUp(true)}}
-          >
-            <span className="bpexisting-text12">
+                setinitateTestPopUp(true)}}>
+            <span className="bgexisting-text12">
               <span>
                 Initiate
                 <span
@@ -65,7 +60,7 @@ function Bpexisting(){
               <br></br>
               <br></br>
             </span>
-            <div className="bpexisting-html-node">
+            <div className="bgexisting-html-node">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -74,90 +69,68 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container3">
-            <span className="bpexisting-text19">
-              <span>BPM</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text22">
-              <span>00</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text25">
-              <span>Pulse</span>
-              <br></br>
-              <br></br>
-            </span>
-          </div>
-          <div className="bpexisting-graph">
-            <span className="bpexisting-text29">
-              <span>Your previous Blood Pressure &amp; Pulse readings</span>
+          <div className="bgexisting-graph">
+            <span className="bgexisting-text19">
+              <span>Your previous Blood Glucose readings</span>
               <br></br>
             </span>
             <div
               data-thq="thq-dropdown"
-              className="bpexisting-thq-dropdown list-item"
+              className="bgexisting-thq-dropdown list-item"
             >
               <div
                 data-thq="thq-dropdown-toggle"
-                className="bpexisting-dropdown-toggle"
+                className="bgexisting-dropdown-toggle"
               >
-                <span className="bpexisting-text32">Last 10 readings</span>
+                <span className="bgexisting-text22">Last 10 readings</span>
                 <div
                   data-thq="thq-dropdown-arrow"
-                  className="bpexisting-dropdown-arrow"
+                  className="bgexisting-dropdown-arrow"
                 >
-                  <svg viewBox="0 0 1024 1024" className="bpexisting-icon">
+                  <svg viewBox="0 0 1024 1024" className="bgexisting-icon">
                     <path d="M426 726v-428l214 214z"></path>
                   </svg>
                 </div>
               </div>
               <ul
                 data-thq="thq-dropdown-list"
-                className="bpexisting-dropdown-list"
+                className="bgexisting-dropdown-list"
               >
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown list-item"
+                  className="bgexisting-dropdown list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle1"
+                    className="bgexisting-dropdown-toggle1"
                   >
-                    <span className="bpexisting-text33">Sub-menu Item</span>
+                    <span className="bgexisting-text23">Sub-menu Item</span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown1 list-item"
+                  className="bgexisting-dropdown1 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle2"
+                    className="bgexisting-dropdown-toggle2"
                   >
-                    <span className="bpexisting-text34">Sub-menu Item</span>
+                    <span className="bgexisting-text24">Sub-menu Item</span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown2 list-item"
+                  className="bgexisting-dropdown2 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle3"
+                    className="bgexisting-dropdown-toggle3"
                   >
-                    <span className="bpexisting-text35">Sub-menu Item</span>
+                    <span className="bgexisting-text25">Sub-menu Item</span>
                   </div>
                 </li>
               </ul>
             </div>
-            <button className="bpexisting-button button">Full reading</button>
-            <button className="bpexisting-button1 button">
-              Systolic readings
-            </button>
-            <button className="bpexisting-button2 button">
-              Mean Arterial Pressure
-            </button>
             <div>
               <span
                 dangerouslySetInnerHTML={{
@@ -166,7 +139,7 @@ function Bpexisting(){
                 }}
               />
             </div>
-            <div className="bpexisting-code-embed">
+            <div className="bgexisting-code-embed">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -175,36 +148,22 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container4">
-            <span className="bpexisting-text36">
-              <span>mm Hg</span>
+          <div className="bgexisting-container3">
+            <span className="bgexisting-text26">
+              <span>mg/DL</span>
               <br></br>
             </span>
-            <span className="bpexisting-text39">
-              <span>mm Hg</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text42">
+            <span className="bgexisting-text29">
               <span>00</span>
               <br></br>
             </span>
-            <span className="bpexisting-text45">
-              <span>00</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text48">
-              <span>Diastolic</span>
-              <br></br>
-              <br></br>
-            </span>
-            <span className="bpexisting-text52">
-              <span>Systolic</span>
-              <br></br>
+            <span className="bgexisting-text32">
+              <span>Glucose Reading</span>
               <br></br>
             </span>
           </div>
           <Header rootClassName="header-root-class-name4"></Header>
-          <div className="bpexisting-code-embed1">
+          <div className="bgexisting-code-embed1">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -212,7 +171,7 @@ function Bpexisting(){
               }}
             />
           </div>
-          <div className="bpexisting-html-node2">
+          <div className="bgexisting-html-node2">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -222,9 +181,9 @@ function Bpexisting(){
           </div>
         </div>
       </div>
-     
+
     </>
   )
 }
 
-export default Bpexisting
+export default BloodGlucoseExisting;

@@ -1,56 +1,44 @@
 import React from 'react'
-import "./style/bpExisting.css"
+import "./style/bodyTemperatureExisting.css"
 import Header from '../components/HeaderBar'
 import  { useEffect, useState } from 'react';
 import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
-import BloodPressureEnd from "../components/BloodPressureStop";
+import BodyTemperatureEnd from "../components/BodyTemperatureStop"
+// import  BodyTemperaturEnd from "../components/HeartRateEndpopup"
 
-// function* gen(){
-//   yield 1;
-//   yield 2;
-//   yield 3;
-//   yield 4;
-// }
-
-const BloodPressurepopup = (props) => {
-  const [popUpSequence, setPopupSequence] = useState("BP_START");
-        if (popUpSequence === "BP_START") return(<BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}} />);
-        else if (popUpSequence === "BP_END") return (<BloodPressureEnd setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
+const BodyTemperaturePopUp = (props) => {
+  const [popUpSequence, setPopupSequence] = useState("BT_START");
+        if (popUpSequence === "BT_START") return(<BpStartPopUp setinitateTestPopUp={"point the device to your forehead or inner ear,and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BT_END")}} />);
+        else if (popUpSequence === "BT_END") return (<BodyTemperatureEnd setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
  }
 
-function Bpexisting(){
-
-  const [initateTestPopUp,setinitateTestPopUp]=useState(false);
+function BodyTemperature(props){
+ 
+    const [initateTestPopUp,setinitateTestPopUp]=useState(false);
 
 
   return (
     <>
-     {/* <Bp_Start_Pop_Up/> */}
-      <div className="bpexisting-container">
-        <div className="bpexisting-container1">
-     {initateTestPopUp && <BloodPressurepopup onExitClick={()=>setinitateTestPopUp(false)} />}
-           {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)} onContinueClick={()=>setinitateTestPopUp(false)}  /></div>}  */}
-          <span className="bpexisting-text">
+      <div className="body-temperature-container">
+        <div className="body-temperature-container1">
+        {initateTestPopUp && <BodyTemperaturePopUp onExitClick={()=>setinitateTestPopUp(false)} />}
+        {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>} */}
+          <span className="body-temperature-text">
             <span>&lt;</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text04">
+          <span className="body-temperature-text04">
             <span>instructions</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text08">
-            <span>Blood Pressure</span>
-            <br></br>
-            <br></br>
-          </span>
-          <div className="bpexisting-container2" onClick={(e)=>{
+          <span className="body-temperature-text08">Body Temperature</span>
+          <div className="body-temperature-container2" onClick={(e)=>{
                 console.log("click");
-                setinitateTestPopUp(true)}}
-          >
-            <span className="bpexisting-text12">
+                setinitateTestPopUp(true)}}>
+            <span className="body-temperature-text09">
               <span>
                 Initiate
                 <span
@@ -65,7 +53,7 @@ function Bpexisting(){
               <br></br>
               <br></br>
             </span>
-            <div className="bpexisting-html-node">
+            <div className="body-temperature-html-node">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -74,90 +62,79 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container3">
-            <span className="bpexisting-text19">
-              <span>BPM</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text22">
-              <span>00</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text25">
-              <span>Pulse</span>
-              <br></br>
-              <br></br>
-            </span>
-          </div>
-          <div className="bpexisting-graph">
-            <span className="bpexisting-text29">
-              <span>Your previous Blood Pressure &amp; Pulse readings</span>
+          <div className="body-temperature-graph">
+            <span className="body-temperature-text16">
+              <span>Your previous Body Temperature readings</span>
               <br></br>
             </span>
             <div
               data-thq="thq-dropdown"
-              className="bpexisting-thq-dropdown list-item"
+              className="body-temperature-thq-dropdown list-item"
             >
               <div
                 data-thq="thq-dropdown-toggle"
-                className="bpexisting-dropdown-toggle"
+                className="body-temperature-dropdown-toggle"
               >
-                <span className="bpexisting-text32">Last 10 readings</span>
+                <span className="body-temperature-text19">
+                  Last 10 readings
+                </span>
                 <div
                   data-thq="thq-dropdown-arrow"
-                  className="bpexisting-dropdown-arrow"
+                  className="body-temperature-dropdown-arrow"
                 >
-                  <svg viewBox="0 0 1024 1024" className="bpexisting-icon">
+                  <svg
+                    viewBox="0 0 1024 1024"
+                    className="body-temperature-icon"
+                  >
                     <path d="M426 726v-428l214 214z"></path>
                   </svg>
                 </div>
               </div>
               <ul
                 data-thq="thq-dropdown-list"
-                className="bpexisting-dropdown-list"
+                className="body-temperature-dropdown-list"
               >
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown list-item"
+                  className="body-temperature-dropdown list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle1"
+                    className="body-temperature-dropdown-toggle1"
                   >
-                    <span className="bpexisting-text33">Sub-menu Item</span>
+                    <span className="body-temperature-text20">
+                      Sub-menu Item
+                    </span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown1 list-item"
+                  className="body-temperature-dropdown1 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle2"
+                    className="body-temperature-dropdown-toggle2"
                   >
-                    <span className="bpexisting-text34">Sub-menu Item</span>
+                    <span className="body-temperature-text21">
+                      Sub-menu Item
+                    </span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown2 list-item"
+                  className="body-temperature-dropdown2 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle3"
+                    className="body-temperature-dropdown-toggle3"
                   >
-                    <span className="bpexisting-text35">Sub-menu Item</span>
+                    <span className="body-temperature-text22">
+                      Sub-menu Item
+                    </span>
                   </div>
                 </li>
               </ul>
             </div>
-            <button className="bpexisting-button button">Full reading</button>
-            <button className="bpexisting-button1 button">
-              Systolic readings
-            </button>
-            <button className="bpexisting-button2 button">
-              Mean Arterial Pressure
-            </button>
             <div>
               <span
                 dangerouslySetInnerHTML={{
@@ -166,7 +143,7 @@ function Bpexisting(){
                 }}
               />
             </div>
-            <div className="bpexisting-code-embed">
+            <div className="body-temperature-code-embed">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -175,36 +152,26 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container4">
-            <span className="bpexisting-text36">
-              <span>mm Hg</span>
+          <div className="body-temperature-container3">
+            <span className="body-temperature-text23">
+              <span>F</span>
               <br></br>
             </span>
-            <span className="bpexisting-text39">
-              <span>mm Hg</span>
+            <span className="body-temperature-text26">
+              <span>o</span>
               <br></br>
             </span>
-            <span className="bpexisting-text42">
+            <span className="body-temperature-text29">
               <span>00</span>
               <br></br>
             </span>
-            <span className="bpexisting-text45">
-              <span>00</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text48">
-              <span>Diastolic</span>
-              <br></br>
-              <br></br>
-            </span>
-            <span className="bpexisting-text52">
-              <span>Systolic</span>
-              <br></br>
+            <span className="body-temperature-text32">
+              <span>Temperature</span>
               <br></br>
             </span>
           </div>
           <Header rootClassName="header-root-class-name4"></Header>
-          <div className="bpexisting-code-embed1">
+          <div className="body-temperature-code-embed1">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -212,7 +179,7 @@ function Bpexisting(){
               }}
             />
           </div>
-          <div className="bpexisting-html-node2">
+          <div className="body-temperature-html-node2">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -227,4 +194,4 @@ function Bpexisting(){
   )
 }
 
-export default Bpexisting
+export default BodyTemperature

@@ -1,56 +1,50 @@
 import React from 'react'
-import "./style/bpExisting.css"
-import Header from '../components/HeaderBar'
+import "./style/heartRateExisting.css"
 import  { useEffect, useState } from 'react';
+import Header from '../components/HeaderBar'
 import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
-import BloodPressureEnd from "../components/BloodPressureStop";
+import HeartRateEndPopUp from "../components/HeartRateEndpopup";
 
-// function* gen(){
-//   yield 1;
-//   yield 2;
-//   yield 3;
-//   yield 4;
-// }
 
-const BloodPressurepopup = (props) => {
-  const [popUpSequence, setPopupSequence] = useState("BP_START");
-        if (popUpSequence === "BP_START") return(<BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}} />);
-        else if (popUpSequence === "BP_END") return (<BloodPressureEnd setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
- }
+const HeartRatepopup = (props) => {
+    const [popUpSequence, setPopupSequence] = useState("BP_START");
+          if (popUpSequence === "BP_START") return(<BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}} />);
+          else if (popUpSequence === "BP_END") return (<HeartRateEndPopUp onExitClick={props.onExitClick} onContinueClick={props.onContinueClick}  />);
+   }
 
-function Bpexisting(){
+function Heartrate(){
+   
+    const [initateTestPopUp,setinitateTestPopUp]=useState(false);
 
-  const [initateTestPopUp,setinitateTestPopUp]=useState(false);
+
 
 
   return (
     <>
-     {/* <Bp_Start_Pop_Up/> */}
-      <div className="bpexisting-container">
-        <div className="bpexisting-container1">
-     {initateTestPopUp && <BloodPressurepopup onExitClick={()=>setinitateTestPopUp(false)} />}
-           {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)} onContinueClick={()=>setinitateTestPopUp(false)}  /></div>}  */}
-          <span className="bpexisting-text">
+      <div className="heartrate-container">
+        <div className="heartrate-container1">
+        {initateTestPopUp && <HeartRatepopup onExitClick={()=>setinitateTestPopUp(false)} />}
+        {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>} */}
+          <span className="heartrate-text">
             <span>&lt;</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text04">
+          <span className="heartrate-text04">
             <span>instructions</span>
             <br></br>
             <br></br>
           </span>
-          <span className="bpexisting-text08">
-            <span>Blood Pressure</span>
+          <span className="heartrate-text08">
+            <span>Heart Rate &amp; SpO2</span>
             <br></br>
             <br></br>
           </span>
-          <div className="bpexisting-container2" onClick={(e)=>{
+          <div className="heartrate-container2"  onClick={(e)=>{
                 console.log("click");
-                setinitateTestPopUp(true)}}
-          >
-            <span className="bpexisting-text12">
+                setinitateTestPopUp(true)}}>
+            <span className="heartrate-text12">
               <span>
                 Initiate
                 <span
@@ -65,7 +59,7 @@ function Bpexisting(){
               <br></br>
               <br></br>
             </span>
-            <div className="bpexisting-html-node">
+            <div className="heartrate-html-node">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -74,88 +68,73 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container3">
-            <span className="bpexisting-text19">
-              <span>BPM</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text22">
-              <span>00</span>
-              <br></br>
-            </span>
-            <span className="bpexisting-text25">
-              <span>Pulse</span>
-              <br></br>
-              <br></br>
-            </span>
-          </div>
-          <div className="bpexisting-graph">
-            <span className="bpexisting-text29">
+          <div className="heartrate-graph">
+            <span className="heartrate-text19">
               <span>Your previous Blood Pressure &amp; Pulse readings</span>
               <br></br>
             </span>
             <div
               data-thq="thq-dropdown"
-              className="bpexisting-thq-dropdown list-item"
+              className="heartrate-thq-dropdown list-item"
             >
               <div
                 data-thq="thq-dropdown-toggle"
-                className="bpexisting-dropdown-toggle"
+                className="heartrate-dropdown-toggle"
               >
-                <span className="bpexisting-text32">Last 10 readings</span>
+                <span className="heartrate-text22">Last 10 readings</span>
                 <div
                   data-thq="thq-dropdown-arrow"
-                  className="bpexisting-dropdown-arrow"
+                  className="heartrate-dropdown-arrow"
                 >
-                  <svg viewBox="0 0 1024 1024" className="bpexisting-icon">
+                  <svg viewBox="0 0 1024 1024" className="heartrate-icon">
                     <path d="M426 726v-428l214 214z"></path>
                   </svg>
                 </div>
               </div>
               <ul
                 data-thq="thq-dropdown-list"
-                className="bpexisting-dropdown-list"
+                className="heartrate-dropdown-list"
               >
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown list-item"
+                  className="heartrate-dropdown list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle1"
+                    className="heartrate-dropdown-toggle1"
                   >
-                    <span className="bpexisting-text33">Sub-menu Item</span>
+                    <span className="heartrate-text23">Sub-menu Item</span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown1 list-item"
+                  className="heartrate-dropdown1 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle2"
+                    className="heartrate-dropdown-toggle2"
                   >
-                    <span className="bpexisting-text34">Sub-menu Item</span>
+                    <span className="heartrate-text24">Sub-menu Item</span>
                   </div>
                 </li>
                 <li
                   data-thq="thq-dropdown"
-                  className="bpexisting-dropdown2 list-item"
+                  className="heartrate-dropdown2 list-item"
                 >
                   <div
                     data-thq="thq-dropdown-toggle"
-                    className="bpexisting-dropdown-toggle3"
+                    className="heartrate-dropdown-toggle3"
                   >
-                    <span className="bpexisting-text35">Sub-menu Item</span>
+                    <span className="heartrate-text25">Sub-menu Item</span>
                   </div>
                 </li>
               </ul>
             </div>
-            <button className="bpexisting-button button">Full reading</button>
-            <button className="bpexisting-button1 button">
+            <button className="heartrate-button button">Full reading</button>
+            <button className="heartrate-button1 button">
               Systolic readings
             </button>
-            <button className="bpexisting-button2 button">
+            <button className="heartrate-button2 button">
               Mean Arterial Pressure
             </button>
             <div>
@@ -166,7 +145,7 @@ function Bpexisting(){
                 }}
               />
             </div>
-            <div className="bpexisting-code-embed">
+            <div className="heartrate-code-embed">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -175,36 +154,34 @@ function Bpexisting(){
               />
             </div>
           </div>
-          <div className="bpexisting-container4">
-            <span className="bpexisting-text36">
-              <span>mm Hg</span>
+          <div className="heartrate-container3">
+            <span className="heartrate-text26">
+              <span>BPM</span>
               <br></br>
             </span>
-            <span className="bpexisting-text39">
-              <span>mm Hg</span>
+            <span className="heartrate-text29">
+              <span>%</span>
               <br></br>
             </span>
-            <span className="bpexisting-text42">
+            <span className="heartrate-text32">
               <span>00</span>
               <br></br>
             </span>
-            <span className="bpexisting-text45">
+            <span className="heartrate-text35">
               <span>00</span>
               <br></br>
             </span>
-            <span className="bpexisting-text48">
-              <span>Diastolic</span>
-              <br></br>
+            <span className="heartrate-text38">
+              <span>Pulse</span>
               <br></br>
             </span>
-            <span className="bpexisting-text52">
-              <span>Systolic</span>
-              <br></br>
+            <span className="heartrate-text41">
+              <span>Sp02</span>
               <br></br>
             </span>
           </div>
           <Header rootClassName="header-root-class-name4"></Header>
-          <div className="bpexisting-code-embed1">
+          <div className="heartrate-code-embed1">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -212,7 +189,7 @@ function Bpexisting(){
               }}
             />
           </div>
-          <div className="bpexisting-html-node2">
+          <div className="heartrate-html-node2">
             <span
               dangerouslySetInnerHTML={{
                 __html:
@@ -227,4 +204,4 @@ function Bpexisting(){
   )
 }
 
-export default Bpexisting
+export default Heartrate

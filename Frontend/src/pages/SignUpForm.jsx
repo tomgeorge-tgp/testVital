@@ -10,7 +10,7 @@ function LoginFrom (props){
     const navigate = useNavigate();
 
 const [signUpMode,setSignupMode]=useState("");
-const [email,setEmail]=useState("uweuhfdb2223@gmail.com");
+const [email,setEmail]=useState("ufadm2223@gmail.com");
 const [name,setName]=useState("");
 const [dob,setDob]=useState("");
 const [password,setPassword]=useState("*************");

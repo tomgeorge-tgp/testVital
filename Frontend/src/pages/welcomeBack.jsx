@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import "./style/welcomeBack.css";
 import Header from './header'
 
-const Welcomeback = (props) => {
+function Welcomeback(props){
+
+
+  
   return (
     <>
       <div className="welcomeback-container">
@@ -34,104 +37,6 @@ const Welcomeback = (props) => {
           </Link>
         </div>
       </div>
-      <style jsx>
-        {`
-          .welcomeback-container {
-            width: 100%;
-            display: flex;
-            overflow: auto;
-            min-height: 100vh;
-            align-items: center;
-            flex-direction: column;
-          }
-          .welcomeback-container1 {
-            top: 0px;
-            flex: 0 0 auto;
-            left: 0px;
-            right: 0px;
-            width: 1024px;
-            bottom: 0px;
-            height: 600px;
-            margin: auto;
-            display: flex;
-            position: absolute;
-            align-items: flex-start;
-            justify-content: flex-start;
-          }
-          .welcomeback-container2 {
-            top: 234px;
-            flex: 0 0 auto;
-            left: 0px;
-            right: 0px;
-            width: 145px;
-            height: 144px;
-            margin: auto;
-            display: flex;
-            position: absolute;
-            box-shadow: 0px 10px 20px 0px #d4d4d4;
-            align-items: flex-start;
-            border-color: #ffffff;
-            border-style: solid;
-            border-width: 1px;
-            border-radius: 8px;
-            background-color: #f4f4f4;
-          }
-          .welcomeback-html-node {
-            top: 24px;
-            left: 39px;
-            width: 66px;
-            height: 66px;
-            position: absolute;
-          }
-          .welcomeback-text {
-            top: 106px;
-            left: 33px;
-            color: rgb(18, 88, 115);
-            position: absolute;
-            font-size: 14px;
-            font-style: normal;
-            font-family: Manrope;
-            font-weight: 600;
-          }
-          .welcomeback-html-node1 {
-            top: 11px;
-            left: 122px;
-            position: absolute;
-          }
-          .welcomeback-text1 {
-            top: 123px;
-            left: 310px;
-            color: rgb(18, 88, 115);
-            position: absolute;
-            font-size: 36px;
-            font-style: normal;
-            font-family: Manrope;
-            font-weight: 600;
-          }
-          .welcomeback-navlink {
-            top: 451px;
-            left: 0px;
-            color: rgb(255, 255, 255);
-            right: 0px;
-            width: 245px;
-            height: 50px;
-            margin: auto;
-            display: flex;
-            position: absolute;
-            font-size: 14px;
-            font-style: normal;
-            text-align: center;
-            align-items: center;
-            font-family: Manrope;
-            font-weight: 600;
-            border-width: 0px;
-            border-radius: 10px;
-            justify-content: center;
-            text-decoration: none;
-            background-color: #125873;
-          }
-        `}
-      </style>
     </>
   )
 }

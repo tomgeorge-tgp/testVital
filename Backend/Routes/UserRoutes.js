@@ -40,7 +40,8 @@ UserRouter.post('/signup',[
       
       const {name,email,password,phoneNumber,gender,dob} =req.body;
       
-      let user = await User.findOne({email: email});
+      // let user = await User.findOne({email: email});
+      let user = await User.findOne({phoneNumber: phoneNumber});
       if(user) throw new Error("Error creating account")  //To check if the user already exists
   
       user=new User({name,email,password,phoneNumber,dob,gender});

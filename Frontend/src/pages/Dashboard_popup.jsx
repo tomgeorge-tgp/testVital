@@ -15,9 +15,31 @@ import PopUp from '../components/PopUp';
 
 
 function Dashboard(){
- 
+  const navigate = useNavigate();
   const location=useLocation();
-  const [popUp,setPopUp]=useState("");
+  const [diagnosisPage,setDiagnosisPage]=useState("");
+
+
+  if(diagnosisPage==="Blood Pressure")
+    {
+      navigate("/bpexisting",{});  //state: data
+    }
+
+  if(diagnosisPage==="Heart Rate")
+  {
+     navigate("/heartrate",{});
+  }  
+  if(diagnosisPage==="Body Temperature")
+  {
+     navigate("/heartrate",{});
+  }  
+
+
+
+
+
+
+
 
   // const [userData,setUserData]=useState([]);
   
@@ -58,38 +80,38 @@ function Dashboard(){
               <div className='readings'>
                    <div className='profile-card'><Profile data={location.state.name}/></div> 
                   <div className='reading-cards'>
-                {popUp && <div className="pop__up"><PopUp setPopUp={setPopUp}/></div>}
+                {/* {popUp && <div className="pop__up"><PopUp setPopUp={setPopUp}/></div>} */}
                   <div onClick={(e)=>{
                 console.log("click");
-                 setPopUp("Blood Pressure")}}>
+                setDiagnosisPage("Blood Pressure")}}>
                  <Card name = "Blood Pressure" img  = {bp_icon}></Card>
                  </div>
 
 
                    <div onClick={(e)=>{
                 console.log("click")
-                setPopUp("Heart Rate")}}>
+                setDiagnosisPage("Heart Rate")}}>
                 <Card name = "Heart Rate & SP02" img  = {bp_icon}></Card>
                 </div>
 
                 <div onClick={(e)=>{
                 console.log("click");
-                 setPopUp("Body Temperature")}}>
+                setDiagnosisPage("Body Temperature")}}>
                    <Card name = "Body Temperature" img  = {bp_icon}></Card>
                    </div>
                    <div onClick={(e)=>{
                 console.log("click");
-                 setPopUp("Blood Glucose")}}>
+                setDiagnosisPage("Blood Glucose")}}>
                    <Card name = "Blood Glucose" img  = {bp_icon}></Card>
                    </div>
                    <div onClick={(e)=>{
                 console.log("click");
-                 setPopUp("Digital Stethoscope")}}>
+                setDiagnosisPage("Digital Stethoscope")}}>
                    <Card name = "Digital Stethoscope" img  = {bp_icon}></Card>
                    </div>
                    <div onClick={(e)=>{
                 console.log("click");
-                 setPopUp("Ecg")}}>
+                setDiagnosisPage("Ecg")}}>
                    <Card name = "ECG" img  = {bp_icon}></Card>
                    </div>
                   </div>
