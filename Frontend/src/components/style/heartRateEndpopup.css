@@ -29,6 +29,13 @@
             left: 35.77px;
             position: absolute;
           }
+          .heart__division__bar{
+            position: absolute;
+            top:-18px;
+            /* left: 0px; */
+            left:80px;
+            right:0px;
+          }
           .sp-o2stop-button {
             top: 342px;
             left: 391px;

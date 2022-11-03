@@ -5,14 +5,15 @@ import "./style/phoneNumber.css";
 import axios from 'axios';
 import api from '../api';
 import { signupUrl } from '../url/url';
+import useLocalStorage from "../hooks/LocalStorage"
 
 
 function PhoneNumber(){
  const location=useLocation();
-   
+ const [user, setUser, removeUser] = useLocalStorage("user")
  const [phone,setPhone] = useState("");
  const navigate = useNavigate();  
- async function handleSubmit(e)
+  function handleSubmit(e)
  {
     
     e.preventDefault();
@@ -28,10 +29,9 @@ function PhoneNumber(){
    console.log(data);
     
  
-   
-   try{
+
       
-     const response=await api.post(
+    api.post(
       //  signupUrl,
       location.state.url,
        data,
@@ -40,22 +40,22 @@ function PhoneNumber(){
          "Content-Type":"application/json",
          "Accept": "*/*",
        }
-     }      ).then(res =>{ console.log(res.status, res.data)
-        navigate("/dashboard",{state: data});
+     }).then(res => { 
+          console.log(res.status, res.data)
+          console.log(res.data.user._id)
+          setUser({id: res.data?.user?._id, accessToken: res.data?.accessToken});
+          console.log(user.current);
      }
      )
-     .catch(err =>  new Error(err));
+     .catch(err =>  new Error(err))
+     .finally(navigate("/dashboard",{state: data}));
      
     
      
-   }
-   catch(err){
-       console.log(`Error:${err.message}`);
-
    }
     
    
- }
+ 
   
 
   return (

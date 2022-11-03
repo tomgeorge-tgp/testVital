@@ -6,6 +6,7 @@ import  { useEffect, useState } from 'react';
 import Bp2_Pop from "../components/Bp2Pop";
 import BloodGlucoseStart from "../components/BloodGlucoseStart";
 import BloodGlucoseInstruction from "../components/BloodGlucoseInstruction";
+import {Link,Navigate,useNavigate,useParams} from "react-router-dom"
 import BloodGlucoseStop from "../components/BloodGlucoseStop";
 
 const BloodGlucosepopup = (props) => {
@@ -20,14 +21,16 @@ const BloodGlucosepopup = (props) => {
 function BloodGlucoseExisting(){
 
   const [initateTestPopUp,setinitateTestPopUp]=useState(false);
-
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="bgexisting-container">
         <div className="bgexisting-container1">
         {initateTestPopUp && <div className="initate__test__pop__up">< BloodGlucosepopup setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>}
-          <span className="bgexisting-text">
+          <span className="bgexisting-text" onClick={(e)=>{
+                navigate("/dashboard",{});  
+                }}>
             <span>&lt;</span>
             <br></br>
             <br></br>

@@ -29,6 +29,7 @@
     height: 30px;
     position: absolute;
     font-size: 25px;
+    cursor: pointer;
   }
   .heartrate-text04 {
     top: 58px;
@@ -58,6 +59,7 @@
     border-radius: 8px;
     justify-content: flex-start;
     background-color: #1ab58f;
+    cursor: pointer;
   }
   .heartrate-text12 {
     top: 55px;
@@ -81,13 +83,25 @@
     top: 234px;
     flex: 0 0 auto;
     left: 32px;
-    width: 960px;
+    width: 990px;
     height: 356px;
     display: flex;
     position: absolute;
     align-items: center;
     border-radius: 8px;
     justify-content: center;
+  }
+  
+  .line__graph{
+    /* z-index: 99;
+    display:flex; */
+    position: absolute;
+    margin-top:50px;
+    min-width: 950px;
+    height: 250px;
+    width: 100%;
+    /* min-height: 400px; */
+    bottom: 2px;
   }
   .heartrate-text19 {
     top: 30px;
@@ -396,3 +410,4 @@
     left: 322px;
     position: absolute;
   }
+  

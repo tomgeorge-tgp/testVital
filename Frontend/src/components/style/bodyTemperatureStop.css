@@ -28,6 +28,13 @@
     left: 35.77px;
     position: absolute;
   }
+  .temp__division__bar{
+    position: absolute;
+    top:-18px;
+    /* left: 0px; */
+    left:80px;
+    right:0px;
+  }
   .bd-stop-button {
     top: 342px;
     left: 391px;

@@ -1,8 +1,13 @@
 import React from 'react'
 import "./style/bloodPressureStop.css";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import CircularProgressBar from './progressbar/CircularProgressBar';
+
 
 function BloodPressureStop(props){
+    
+
+
   return (
     <>
       <div className="bp-stop-container">
@@ -17,13 +22,17 @@ function BloodPressureStop(props){
           </div>
           <button className="bp-stop-button button">Stop</button>
           <div className="bp-stop-container2">
+          <div >
+         <CircularProgressBar value={40} />
+      </div>
             <span className="bp-stop-text">
               <span>mmHg</span>
               <br></br>
             </span>
             <span className="bp-stop-text3">{props.sp02_reading11}</span>
-            <div>
-              <span
+    
+            <div className="bp_division__bar"> 
+              <span 
                 dangerouslySetInnerHTML={{
                   __html:
                     '<svg width="2" height="199" viewBox="0 0 2 199" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n    <path d="M1 0V31.5M1 199V169.5" stroke="#313665" />\r\n</svg>',

@@ -12,27 +12,53 @@ import api from '../api';
 import "./style/dashBoard.css"
 
 import PopUp from '../components/PopUp';
+import useLocalStorage from "../hooks/LocalStorage"
+
 
 
 function Dashboard(){
   const navigate = useNavigate();
   const location=useLocation();
   const [diagnosisPage,setDiagnosisPage]=useState("");
+  // const [id, setId, removeId] = useLocalStorage("userid",)
+  const [user, setUser, removeUser] = useLocalStorage("user")
+  console.log(location.state);
+  console.log(user.current);
+  const data={
+    name:location.state.name,
+    email:location.state.email,
+    password:location.state.password,
+    phoneNumber:location.state.phoneNumber,
+    gender:location.state.gender,
+    dob:location.state.dob,
 
+}
 
   if(diagnosisPage==="Blood Pressure")
     {
-      navigate("/bpexisting",{});  //state: data
+      navigate("/bpexisting",{state:data});  //state: data
     }
 
   if(diagnosisPage==="Heart Rate")
   {
-     navigate("/heartrate",{});
+     navigate("/heartrateexisting",{state:data});
   }  
   if(diagnosisPage==="Body Temperature")
   {
-     navigate("/heartrate",{});
+     navigate("/bodytemperatureexisting",{state:data});
   }  
+  if(diagnosisPage==="Blood Glucose")
+  {
+     navigate("/bloodglucoseexisting",{state:data});
+  }  
+  if(diagnosisPage==="Digital Stethoscope")
+  {
+    //  navigate("",{});
+  }  
+  if(diagnosisPage==="ECG")
+  {
+    //  navigate("/heartrate",{});
+  } 
 
 
 
@@ -40,31 +66,31 @@ function Dashboard(){
 
 
 
-
-  // const [userData,setUserData]=useState([]);
+  const [userData,setUserData]=useState([]);
   
-  // const userDataFetch=async()=>{
-  //   try{
-  //   const response=await api.get('/api/user');
-  //   setUserData(response.data);
-  //   console.log(userData);
-  // }catch(err)
-  // {
-  //   if(err.response){
-  //   //Not in the 200 response range
-  //   console.log(err.response.data);
-  //   console.log(err.response.status);
-  //   console.log(err.response.headers);
-  // }
-  // else
-  // {
-  //   console.log(`Error:${err.message}`);
-  // }
-  // }
-  // }
-  // useEffect(()=>{
-  //   userDataFetch();
-  // },[])
+  const userDataFetch=async()=>{
+    try{
+      console.log(user.current.id);
+    const response=await api.get(`/api/user/${user.current.id}`);
+    setUserData(response.data);
+    console.log(userData);
+  }catch(err)
+  {
+    if(err.response){
+    //Not in the 200 response range
+    console.log(err.response.data);
+    console.log(err.response.status);
+    console.log(err.response.headers);
+  }
+  else
+  {
+    console.log(`Error:${err.message}`);
+  }
+  }
+  }
+  useEffect(()=>{
+    userDataFetch();
+  },[])
 
 
 

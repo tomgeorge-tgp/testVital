@@ -7,6 +7,13 @@
     flex-direction: column;
     z-index: 99;
   }
+  .bp_division__bar{
+    position: absolute;
+    top:-18px;
+    /* left: 0px; */
+    left:80px;
+    right:0px;
+  }
   .bp-stop-container1 {
     top: 0px;
     flex: 0 0 auto;

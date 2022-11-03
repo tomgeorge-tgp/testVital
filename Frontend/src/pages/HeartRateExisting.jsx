@@ -5,7 +5,7 @@ import Header from '../components/HeaderBar'
 import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
 import HeartRateEndPopUp from "../components/HeartRateEndpopup";
-
+import LineGraph from '../components/graphs/LineGraph';
 
 const HeartRatepopup = (props) => {
     const [popUpSequence, setPopupSequence] = useState("BP_START");
@@ -130,6 +130,7 @@ function Heartrate(){
                 </li>
               </ul>
             </div>
+            <div className="graph__buttons">
             <button className="heartrate-button button">Full reading</button>
             <button className="heartrate-button1 button">
               Systolic readings
@@ -137,7 +138,8 @@ function Heartrate(){
             <button className="heartrate-button2 button">
               Mean Arterial Pressure
             </button>
-            <div>
+            </div>
+            {/* <div>
               <span
                 dangerouslySetInnerHTML={{
                   __html:
@@ -152,7 +154,8 @@ function Heartrate(){
                     '<svg width="906" height="2" viewBox="0 0 906 2" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n    <line opacity="0.2" x1="0.000551877" y1="0.5" x2="906" y2="1.5" stroke="#DEDEDE" />\r\n</svg>',
                 }}
               />
-            </div>
+            </div> */}
+            <div className='line__graph'><LineGraph/></div> 
           </div>
           <div className="heartrate-container3">
             <span className="heartrate-text26">

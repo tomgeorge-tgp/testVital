@@ -24,6 +24,13 @@
     left: 35.77px;
     position: absolute;
   }
+  .glucose__division__bar{
+    position: absolute;
+    top:-18px;
+    /* left: 0px; */
+    left:80px;
+    right:0px;
+  }
   .bg-stop-button {
     top: 342px;
     left: 810px;

@@ -30,6 +30,9 @@
             position: absolute;
             font-size: 25px;
           }
+          .bpexisting-text:hover{
+          cursor: pointer;
+          }
           .bpexisting-text04 {
             top: 58px;
             left: 909px;
@@ -58,6 +61,7 @@
             border-radius: 8px;
             justify-content: flex-start;
             background-color: #1ab58f;
+            cursor: pointer;
           }
           .bpexisting-text12 {
             top: 55px;
@@ -435,3 +439,5 @@
             left: 431px;
             position: absolute;
           }
+         
+          

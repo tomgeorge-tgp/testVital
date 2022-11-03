@@ -1,6 +1,8 @@
 import React from 'react'
 import "./style/bloodGlucoseStop.css"
 import PropTypes from 'prop-types'
+import CircularProgressBar from './progressbar/CircularProgressBar';
+
 
 function BloodGlucoseStop(props){
   return (
@@ -17,12 +19,13 @@ function BloodGlucoseStop(props){
           </div>
           <button className="bg-stop-button button" onClick={props.onExitClick}>Exit</button>
           <div className="bg-stop-container2">
+          <CircularProgressBar value={40} />
             <span className="bg-stop-text">
               <span>S</span>
               <br></br>
             </span>
             <span className="bg-stop-text3">{props.sp02_reading11}</span>
-            <div>
+            <div className="glucose__division__bar">
               <span
                 dangerouslySetInnerHTML={{
                   __html:

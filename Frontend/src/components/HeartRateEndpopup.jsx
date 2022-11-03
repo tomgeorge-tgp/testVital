@@ -1,6 +1,7 @@
 import React from 'react'
 import "./style/heartRateEndpopup.css"
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import CircularProgressBar from './progressbar/CircularProgressBar';
 
 function HeartRateEndpopup(props){
   return (
@@ -19,6 +20,7 @@ function HeartRateEndpopup(props){
             Stop
           </button>
           <div className="sp-o2stop-container2">
+          <CircularProgressBar value={40} />
             <span className="sp-o2stop-text">{props.HR_reading}</span>
             <span className="sp-o2stop-text1">
               <br></br>
@@ -29,7 +31,7 @@ function HeartRateEndpopup(props){
             <span className="sp-o2stop-text6">BPM</span>
             <span className="sp-o2stop-text7">%</span>
             <span className="sp-o2stop-text8">{props.sp02_reading11}</span>
-            <div>
+            <div className="heart__division__bar">
               <span
                 dangerouslySetInnerHTML={{
                   __html:

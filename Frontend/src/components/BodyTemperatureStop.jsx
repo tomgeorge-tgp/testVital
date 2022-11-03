@@ -1,6 +1,8 @@
 import React from 'react'
 import "./style/bodyTemperatureStop.css";
 import PropTypes from 'prop-types';
+import CircularProgressBar from './progressbar/CircularProgressBar';
+
 
 function BodyTemperatureStop(props){
   return (
@@ -17,12 +19,13 @@ function BodyTemperatureStop(props){
           </div>
           <button className="bd-stop-button button">Stop</button>
           <div className="bd-stop-container2">
+          <CircularProgressBar value={40} />
             <span className="bd-stop-text">
               <span>F</span>
               <br></br>
             </span>
             <span className="bd-stop-text3">{props.sp02_reading11}</span>
-            <div>
+            <div className="temp__division__bar">
               <span
                 dangerouslySetInnerHTML={{
                   __html:

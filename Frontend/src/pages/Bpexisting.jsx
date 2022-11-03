@@ -5,6 +5,8 @@ import  { useEffect, useState } from 'react';
 import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
 import BloodPressureEnd from "../components/BloodPressureStop";
+import {Link,Navigate,useNavigate,useParams,useLocation} from "react-router-dom"
+
 
 // function* gen(){
 //   yield 1;
@@ -22,6 +24,19 @@ const BloodPressurepopup = (props) => {
 function Bpexisting(){
 
   const [initateTestPopUp,setinitateTestPopUp]=useState(false);
+  const navigate = useNavigate();
+  const location=useLocation();
+   console.log(location);
+
+   const data={
+    name:location.state.name,
+    email:location.state.email,
+    password:location.state.password,
+    phoneNumber:location.state.phoneNumber,
+    gender:location.state.gender,
+    dob:location.state.dob,
+
+}
 
 
   return (
@@ -31,7 +46,8 @@ function Bpexisting(){
         <div className="bpexisting-container1">
      {initateTestPopUp && <BloodPressurepopup onExitClick={()=>setinitateTestPopUp(false)} />}
            {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)} onContinueClick={()=>setinitateTestPopUp(false)}  /></div>}  */}
-          <span className="bpexisting-text">
+          <span className="bpexisting-text" onClick={(e)=>{
+                navigate("/dashboard",{state:data});  }}>
             <span>&lt;</span>
             <br></br>
             <br></br>
@@ -158,22 +174,23 @@ function Bpexisting(){
             <button className="bpexisting-button2 button">
               Mean Arterial Pressure
             </button>
-            <div>
+            {/* <div>
               <span
                 dangerouslySetInnerHTML={{
                   __html:
                     '<svg width="906" height="2" viewBox="0 0 906 2" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n    <line opacity="0.2" x1="0.000551877" y1="0.5" x2="906" y2="1.5" stroke="#DEDEDE" />\r\n</svg>',
                 }}
               />
-            </div>
-            <div className="bpexisting-code-embed">
+            </div> */}
+            {/* <div className="bpexisting-code-embed">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
                     '<svg width="906" height="2" viewBox="0 0 906 2" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n    <line opacity="0.2" x1="0.000551877" y1="0.5" x2="906" y2="1.5" stroke="#DEDEDE" />\r\n</svg>',
                 }}
               />
-            </div>
+            </div> */}
+           
           </div>
           <div className="bpexisting-container4">
             <span className="bpexisting-text36">

@@ -1,4 +1,4 @@
-import {Router} from "express";
+import {response, Router} from "express";
 import {check,validationResult} from "express-validator";
 const UserRouter = Router();
 import bcrypt from "bcrypt";
@@ -8,6 +8,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import auth from "../Middleware/auth.js";
+
 
 dotenv.config();
 
@@ -52,7 +53,7 @@ UserRouter.post('/signup',[
       console.log("user saved");
 
       const jwtToken = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_ACCESS_TOKEN_SECRET);
-      res.status(201).json({msg: "Account created successfully!", accessToken: jwtToken, user: {name: user.name, email: user.email,gender:user.gender,dob:user.dob}, errors: []})
+      res.status(201).json({msg: "Account created successfully!", accessToken: jwtToken, user: {_id: user._id, name: user.name, email: user.email,gender:user.gender,dob:user.dob}, errors: []})
     }
     catch(err){
             console.log(err);
@@ -102,7 +103,7 @@ UserRouter.post('/login',[
     {
       console.log("User loggged in: ", user._id, " ", new Date().toISOString());
       const jwtToken = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_ACCESS_TOKEN_SECRET);
-      res.status(201).json({msg: "Logged in successfully!", accessToken: jwtToken, user: {name: user.name, email: user.email,gender:user.gender,dob:user.dob}, errors: []}) 
+      res.status(201).json({msg: "Logged in successfully!", accessToken: jwtToken, user: {_id: user._id,name: user.name, email: user.email,gender:user.gender,dob:user.dob}, errors: []}) 
     }
     else
     {
@@ -116,6 +117,19 @@ UserRouter.post('/login',[
 });
 
 
+UserRouter.get('/:id',async(req, res) => {
+  console.log("here");
+  const userId=req.params.id;
+  let user = await User.findById(userId);
+  console.log(user);
+
+  if(user==null)
+  {
+    throw new Error("Invalid login details!");
+    res.status(404).json({errors:[{msg: "User not found!"}]});
+  }
+
+});
 
 
 
