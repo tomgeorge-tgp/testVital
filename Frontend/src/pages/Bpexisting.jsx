@@ -7,6 +7,7 @@ import BpStartPopUp from "../components/BpStart";
 import BloodPressureEnd from "../components/BloodPressureStop";
 import {Link,Navigate,useNavigate,useParams,useLocation} from "react-router-dom"
 
+import CandleStickGraph from "../components/graphs/CandleStickGraph";
 
 // function* gen(){
 //   yield 1;
@@ -190,6 +191,8 @@ function Bpexisting(){
                 }}
               />
             </div> */}
+
+            <div className="bp__graph"><CandleStickGraph/></div>
            
           </div>
           <div className="bpexisting-container4">
@@ -220,6 +223,7 @@ function Bpexisting(){
               <br></br>
             </span>
           </div>
+         
           <Header rootClassName="header-root-class-name4"></Header>
           <div className="bpexisting-code-embed1">
             <span
@@ -238,6 +242,8 @@ function Bpexisting(){
             />
           </div>
         </div>
+       
+       
       </div>
      
     </>

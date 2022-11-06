@@ -132,6 +132,17 @@
             border-radius: 8px;
             justify-content: center;
           }
+          .bp__graph{
+            /* z-index: 99;
+            display:flex; */
+            position: absolute;
+             margin-top:50px;
+            min-width: 950px;
+            height: 250px;
+            width: 100%;
+            /* min-height: 400px; */
+            bottom: 2px;
+          }
           .bpexisting-text29 {
             top: 30px;
             left: 30px;
