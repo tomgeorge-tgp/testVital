@@ -3,7 +3,6 @@ import {check,validationResult} from "express-validator";
 const UserRouter = Router();
 import bcrypt from "bcrypt";
 import User from "../Models/User.js"
-import cors from "cors";
 
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -57,7 +56,7 @@ UserRouter.post('/signup',[
     }
     catch(err){
             console.log(err);
-            return res.status(400).json({errors:[{msg: err}]});
+            return res.status(400).json({errors:[{msg: err.message}]});
     } 
 });
 
@@ -112,23 +111,39 @@ UserRouter.post('/login',[
   }
   catch(err){
       console.log(err);
-      return res.status(400).json({errors:[{msg: err}]});
+      return res.status(400).json({errors:[{msg: err.message}]});
   }
 });
 
 
-UserRouter.get('/:id',async(req, res) => {
-  console.log("here");
+UserRouter.get('/:id',auth,async(req, res) => {
+ try{ 
   const userId=req.params.id;
   let user = await User.findById(userId);
+
   console.log(user);
 
-  if(user==null)
-  {
-    throw new Error("Invalid login details!");
-    res.status(404).json({errors:[{msg: "User not found!"}]});
-  }
 
+  if(!user)
+  {
+    throw new Error("User not found!");
+  }
+  else{
+    const userData={
+      name: user.name,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      dob: user.dob,
+      gender: user.gender,
+    }
+    return res.status(200).json(userData);
+      
+  }
+ }
+ catch (err)
+ {
+  res.status(400).json({errors:[{msg: err.message}]});
+ }
 });
 
 

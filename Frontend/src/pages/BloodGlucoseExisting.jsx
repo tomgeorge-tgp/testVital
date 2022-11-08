@@ -8,6 +8,7 @@ import BloodGlucoseStart from "../components/BloodGlucoseStart";
 import BloodGlucoseInstruction from "../components/BloodGlucoseInstruction";
 import {Link,Navigate,useNavigate,useParams} from "react-router-dom"
 import BloodGlucoseStop from "../components/BloodGlucoseStop";
+import LineGraph from '../components/graphs/LineGraph';
 
 const BloodGlucosepopup = (props) => {
   const [popUpSequence, setPopupSequence] = useState("BP_START");
@@ -150,6 +151,7 @@ function BloodGlucoseExisting(){
                 }}
               />
             </div>
+            <div className='line__graph'><LineGraph/></div> 
           </div>
           <div className="bgexisting-container3">
             <span className="bgexisting-text26">

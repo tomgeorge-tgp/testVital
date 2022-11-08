@@ -6,6 +6,7 @@ import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
 import BodyTemperatureEnd from "../components/BodyTemperatureStop"
 // import  BodyTemperaturEnd from "../components/HeartRateEndpopup"
+import LineGraph from '../components/graphs/LineGraph';
 
 const BodyTemperaturePopUp = (props) => {
   const [popUpSequence, setPopupSequence] = useState("BT_START");
@@ -151,6 +152,7 @@ function BodyTemperature(props){
                 }}
               />
             </div>
+            <div className='line__graph'><LineGraph/></div> 
           </div>
           <div className="body-temperature-container3">
             <span className="body-temperature-text23">

@@ -2,7 +2,8 @@ import {useRef, useCallback} from 'react'
 
 
 function useLocalStorage(key, data=null)
-{ const itemRef = useRef(data)
+{ 
+  const itemRef = useRef(data)
   if(data){
     localStorage.setItem(key, JSON.stringify(data));
     itemRef.current = data;

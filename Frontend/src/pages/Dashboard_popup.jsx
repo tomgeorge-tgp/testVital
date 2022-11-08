@@ -10,46 +10,48 @@ import bp_icon from '../components/assets/bp.png';
 import axios from 'axios';
 import api from '../api';
 import "./style/dashBoard.css"
+import { fetchUserUrl} from '../url/url';
 
 import PopUp from '../components/PopUp';
-import useLocalStorage from "../hooks/LocalStorage"
+import useLocalStorageRef from "../hooks/LocalStorage"
 
 
 
 function Dashboard(){
   const navigate = useNavigate();
-  const location=useLocation();
+  // const location=useLocation();
   const [diagnosisPage,setDiagnosisPage]=useState("");
   // const [id, setId, removeId] = useLocalStorage("userid",)
-  const [user, setUser, removeUser] = useLocalStorage("user")
-  console.log(location.state);
+  const [user, setUser, removeUser] = useLocalStorageRef("user")
+  
+  const [userData,setUserData]=useState([]);
   console.log(user.current);
-  const data={
-    name:location.state.name,
-    email:location.state.email,
-    password:location.state.password,
-    phoneNumber:location.state.phoneNumber,
-    gender:location.state.gender,
-    dob:location.state.dob,
+//   const data={
+//     name:location.state.name,
+//     email:location.state.email,
+//     password:location.state.password,
+//     phoneNumber:location.state.phoneNumber,
+//     gender:location.state.gender,
+//     dob:location.state.dob,
 
-}
+// }
 
   if(diagnosisPage==="Blood Pressure")
     {
-      navigate("/bpexisting",{state:data});  //state: data
+      navigate("/bpexisting",{state:userData});  //state: data
     }
 
   if(diagnosisPage==="Heart Rate")
   {
-     navigate("/heartrateexisting",{state:data});
+     navigate("/heartrateexisting",{state:userData});
   }  
   if(diagnosisPage==="Body Temperature")
   {
-     navigate("/bodytemperatureexisting",{state:data});
+     navigate("/bodytemperatureexisting",{state:userData});
   }  
   if(diagnosisPage==="Blood Glucose")
   {
-     navigate("/bloodglucoseexisting",{state:data});
+     navigate("/bloodglucoseexisting",{state:userData});
   }  
   if(diagnosisPage==="Digital Stethoscope")
   {
@@ -66,14 +68,22 @@ function Dashboard(){
 
 
 
-  const [userData,setUserData]=useState([]);
   
   const userDataFetch=async()=>{
     try{
       console.log(user.current.id);
-    const response=await api.get(`/api/user/${user.current.id}`);
+    const token=user.current.accessToken;
+    if(!token){
+       throw new Error("token not found");
+       
+    }
+    const response=await api.get(fetchUserUrl+`/${user.current.id}`,
+    {headers: {
+      "Accept": "*/*",
+      "Authorization": `Bearer ${token}`,
+    }});
+    console.table(response.data);
     setUserData(response.data);
-    console.log(userData);
   }catch(err)
   {
     if(err.response){
@@ -86,6 +96,7 @@ function Dashboard(){
   {
     console.log(`Error:${err.message}`);
   }
+  navigate("/loginForm");
   }
   }
   useEffect(()=>{
@@ -104,7 +115,7 @@ function Dashboard(){
             
             <div className='mid-section'>
               <div className='readings'>
-                   <div className='profile-card'><Profile data={location.state.name}/></div> 
+                   <div className='profile-card'><Profile data={userData?.name ?? ""}/></div> 
                   <div className='reading-cards'>
                 {/* {popUp && <div className="pop__up"><PopUp setPopUp={setPopUp}/></div>} */}
                   <div onClick={(e)=>{

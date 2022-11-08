@@ -5,12 +5,12 @@ import "./style/phoneNumber.css";
 import axios from 'axios';
 import api from '../api';
 import { signupUrl } from '../url/url';
-import useLocalStorage from "../hooks/LocalStorage"
+import useLocalStorageRef from "../hooks/LocalStorage"
 
 
 function PhoneNumber(){
  const location=useLocation();
- const [user, setUser, removeUser] = useLocalStorage("user")
+ const [user, setUser, removeUser] = useLocalStorageRef("user")
  const [phone,setPhone] = useState("");
  const navigate = useNavigate();  
   function handleSubmit(e)
