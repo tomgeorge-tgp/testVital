@@ -1,12 +1,12 @@
 .bpstart-container {
-    width: 100%;
+    width: 64rem;
+    position:absolute;
     height: 600px;
     display: flex;
-    position: relative;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
-    z-index: 99;
+    background-color:rgba(0, 0, 0, 0.354);
+    z-index: 200;
   }
   .bpstart-container1 {
     flex: 0 0 auto;

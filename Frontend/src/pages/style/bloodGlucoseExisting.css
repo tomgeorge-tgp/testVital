@@ -28,6 +28,7 @@
     height: 30px;
     position: absolute;
     font-size: 25px;
+    cursor: pointer;
   }
   .bgexisting-text04 {
     top: 58px;

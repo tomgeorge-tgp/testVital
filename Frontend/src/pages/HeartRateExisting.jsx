@@ -6,7 +6,7 @@ import Bp2_Pop from "../components/Bp2Pop";
 import BpStartPopUp from "../components/BpStart";
 import HeartRateEndPopUp from "../components/HeartRateEndpopup";
 import LineGraph from '../components/graphs/LineGraph';
-
+import {Link,Navigate,useNavigate,useParams,useLocation} from "react-router-dom"
 const HeartRatepopup = (props) => {
     const [popUpSequence, setPopupSequence] = useState("BP_START");
           if (popUpSequence === "BP_START") return(<BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={props.onExitClick} onContinueClick={()=>{setPopupSequence("BP_END")}} />);
@@ -16,7 +16,8 @@ const HeartRatepopup = (props) => {
 function Heartrate(){
    
     const [initateTestPopUp,setinitateTestPopUp]=useState(false);
-
+    const navigate = useNavigate();
+  const location=useLocation();
 
 
 
@@ -26,7 +27,8 @@ function Heartrate(){
         <div className="heartrate-container1">
         {initateTestPopUp && <HeartRatepopup onExitClick={()=>setinitateTestPopUp(false)} />}
         {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>} */}
-          <span className="heartrate-text">
+          <span className="heartrate-text"onClick={(e)=>{
+                navigate("/dashboard",{});  }}>
             <span>&lt;</span>
             <br></br>
             <br></br>

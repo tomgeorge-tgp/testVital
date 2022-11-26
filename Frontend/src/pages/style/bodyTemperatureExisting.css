@@ -28,6 +28,7 @@
     height: 30px;
     position: absolute;
     font-size: 25px;
+    cursor: pointer;
   }
   .body-temperature-text04 {
     top: 58px;

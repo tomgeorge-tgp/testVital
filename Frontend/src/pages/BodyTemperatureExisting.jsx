@@ -7,6 +7,7 @@ import BpStartPopUp from "../components/BpStart";
 import BodyTemperatureEnd from "../components/BodyTemperatureStop"
 // import  BodyTemperaturEnd from "../components/HeartRateEndpopup"
 import LineGraph from '../components/graphs/LineGraph';
+import {Link,Navigate,useNavigate,useParams,useLocation} from "react-router-dom"
 
 const BodyTemperaturePopUp = (props) => {
   const [popUpSequence, setPopupSequence] = useState("BT_START");
@@ -17,7 +18,8 @@ const BodyTemperaturePopUp = (props) => {
 function BodyTemperature(props){
  
     const [initateTestPopUp,setinitateTestPopUp]=useState(false);
-
+    const navigate = useNavigate();
+  const location=useLocation();
 
   return (
     <>
@@ -25,7 +27,8 @@ function BodyTemperature(props){
         <div className="body-temperature-container1">
         {initateTestPopUp && <BodyTemperaturePopUp onExitClick={()=>setinitateTestPopUp(false)} />}
         {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"Insert finger into the oximeter clip, and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)}/></div>} */}
-          <span className="body-temperature-text">
+          <span className="body-temperature-text" onClick={(e)=>{
+                navigate("/dashboard",{});  }}>
             <span>&lt;</span>
             <br></br>
             <br></br>

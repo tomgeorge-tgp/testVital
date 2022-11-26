@@ -25,7 +25,7 @@ function App() {
          <Route path='/loginForm' element={<LoginForm/>} /> 
          <Route path='/signUpForm' element={<SignUpForm/>} /> 
          <Route path='/phonenumber' element={<PhoneNumber />} /> 
-         <Route element={<RequireAuth/>}>
+         {/* <Route element={<RequireAuth/>}> */}
          <Route path='/dashboard' element={<Dashboard />} /> 
          
          <Route path='/bpexisting' element={<Bpexisting/>}/>
@@ -33,7 +33,7 @@ function App() {
          <Route path='/bodytemperatureexisting' element={<BodyTemperatureExisting/>}/>
          <Route path='/bloodglucoseexisting' element={<BloodGlucoseExisting/>}/>
          <Route path='/bpfirsttime' element={<BpfirstTime/>}/> 
-         </Route>
+         {/* </Route> */}
             {/* <Route path='/home' element ={<Home />}/>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} /> */}
