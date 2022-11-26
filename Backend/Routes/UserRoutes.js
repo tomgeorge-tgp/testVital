@@ -3,7 +3,7 @@ import {check,validationResult} from "express-validator";
 const UserRouter = Router();
 import bcrypt from "bcrypt";
 import User from "../Models/User.js"
-
+// import {relam} from "../database.js"
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import auth from "../Middleware/auth.js";
@@ -41,6 +41,7 @@ UserRouter.post('/signup',[
       const {name,email,password,phoneNumber,gender,dob} =req.body;
       
       // let user = await User.findOne({email: email});
+
       let user = await User.findOne({phoneNumber: phoneNumber});
       if(user) throw new Error("Error creating account")  //To check if the user already exists
   
