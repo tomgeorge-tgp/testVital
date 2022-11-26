@@ -13,9 +13,9 @@ import "./candle__stick__graph.css"
 // ];
 
 const CustomizedDot = (props) => {
-  const { cx, cy, stroke, payload, value } = props;
+  const { cx, cy, value } = props;
   
-  const color = value <= 115 ? '#6ACA79': '#FF1929';
+  const color = value <= 115 ? '#FF1929':'#6ACA79';
 
   console.log(value);
   return(
@@ -23,12 +23,13 @@ const CustomizedDot = (props) => {
     <svg x={cx-5} y={cy-5} width="10" height="10" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
      <circle cx="3" cy="3" r="3" fill={color} />
     </svg>
-    </>);
+    </>
+    );
 };
 
 
 const data = [
-  { x: 45, y: 100, z: 50, errorY: [200, 1000],  },
+  { x: 45, y: 100, z: 10, errorY: [200, 1000],  },
   { x: 100, y: 200, z: 200, errorY: [1000,200],  },
   { x: 120, y: 100, z: 260, errorY: [1000,200]  },
   { x: 170, y: 300, z: 400, errorY: [200, 1000],  },
@@ -48,8 +49,9 @@ function CandleStickGraph(){
   <XAxis dataKey="x"  name="stature" />
   <YAxis axisLine={false} dataKey="y" name="weight" tickLine={false}  />
   {/* <Tooltip /> */}
-  <Scatter name="" data={data} fill={<CustomizedDot/>}>
-    <ErrorBar dataKey="errorY" width={4} strokeWidth={2} stroke="green" direction="y" />
+  <Scatter name="" data={data} shape={({payload: {x:cy, y:cx, z:value}}) => <CustomizedDot {...{cx, cy, value}} />}>
+  {/* <Scatter name="" data={data} shape={(p) => console.log(p)}> */}
+    <ErrorBar dataKey="errorY" width={4} strokeWidth={2} stroke="red" direction="y" />
     {/* <ErrorBar dataKey="errorX" width={0} strokeWidth={1} stroke="blue" opacity={0.8} direction="x" /> */}
   </Scatter>
   <Legend/>

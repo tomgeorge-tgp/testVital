@@ -5,7 +5,8 @@
     .dashboard-container {
       width: 100%;
       display: flex;
-      min-height: 2000px;
+      /* min-height: 2000px; */
+      min-height: 100vh;
       background-color: #FFFFFF;
       position: relative;
     }

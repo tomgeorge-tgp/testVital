@@ -6,13 +6,14 @@ import axios from 'axios';
 import api from '../api';
 import { signupUrl } from '../url/url';
 import useLocalStorageRef from "../hooks/LocalStorage"
-
+import useAuth from "../hooks/useAuth";
 
 function PhoneNumber(){
  const location=useLocation();
  const [user, setUser, removeUser] = useLocalStorageRef("user")
  const [phone,setPhone] = useState("");
- const navigate = useNavigate();  
+ const navigate = useNavigate(); 
+ const {setAuth,auth}=useAuth(); 
   function handleSubmit(e)
  {
     
@@ -27,7 +28,7 @@ function PhoneNumber(){
    
   }
    console.log(data);
-    
+   console.log(location.state.url)
  
 
       
@@ -44,7 +45,9 @@ function PhoneNumber(){
           console.log(res.status, res.data)
           console.log(res.data.user._id)
           setUser({id: res.data?.user?._id, accessToken: res.data?.accessToken});
+          setAuth({id:res.data?.user?._id,accessToken:res.data?.accessToken});
           console.log(user.current);
+          console.log(auth);
      }
      )
      .catch(err =>  new Error(err))

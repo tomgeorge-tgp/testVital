@@ -29,15 +29,15 @@ function Bpexisting(){
   const location=useLocation();
    console.log(location);
 
-   const data={
-    name:location.state.name,
-    email:location.state.email,
-    password:location.state.password,
-    phoneNumber:location.state.phoneNumber,
-    gender:location.state.gender,
-    dob:location.state.dob,
+//    const data={
+//     name:location.state.name,
+//     email:location.state.email,
+//     password:location.state.password,
+//     phoneNumber:location.state.phoneNumber,
+//     gender:location.state.gender,
+//     dob:location.state.dob,
 
-}
+// }
 
 
   return (
@@ -48,7 +48,7 @@ function Bpexisting(){
      {initateTestPopUp && <BloodPressurepopup onExitClick={()=>setinitateTestPopUp(false)} />}
            {/* {initateTestPopUp && <div className="initate__test__pop__up"><BpStartPopUp setinitateTestPopUp={"wear device and press \"start\"."} onExitClick={()=>setinitateTestPopUp(false)} onContinueClick={()=>setinitateTestPopUp(false)}  /></div>}  */}
           <span className="bpexisting-text" onClick={(e)=>{
-                navigate("/dashboard",{state:data});  }}>
+                navigate("/dashboard",{});  }}>
             <span>&lt;</span>
             <br></br>
             <br></br>
